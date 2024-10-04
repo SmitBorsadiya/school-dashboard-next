@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  postgress:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user_name
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db_name
+    ports:
+      - "5424:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: nextjs_app
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL: postgresql://user_name:password@localhost:5424/db_name
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
