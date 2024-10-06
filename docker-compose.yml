@@ -5,11 +5,11 @@ services:
     image: postgres
     container_name: postgres
     environment:
-      POSTGRES_USER: user_name
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: db_name
+      POSTGRES_USER: smit5525
+      POSTGRES_PASSWORD: smit123456
+      POSTGRES_DB: school
     ports:
-      - "5424:5432"
+      - "5525:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -19,7 +19,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL: postgresql://user_name:password@localhost:5424/db_name
+      - DATABASE_URL: postgresql://smit5525:smit123456@localhost:5525/school
     depends_on:
       - postgres
 
