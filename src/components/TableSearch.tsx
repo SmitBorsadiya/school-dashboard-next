@@ -8,7 +8,9 @@ const TableSearch = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const value = (e.currentTarget[0] as HTMLInputElement).value;
+
     const params = new URLSearchParams(window.location.search);
     params.set("search", value);
     router.push(`${window.location.pathname}?${params}`);
@@ -22,6 +24,7 @@ const TableSearch = () => {
       <Image src="/search.png" alt="" width={14} height={14} />
       <input
         type="text"
+        name="inputData"
         placeholder="Search..."
         className="w-[200px] p-2 bg-transparent outline-none"
       />
