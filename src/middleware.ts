@@ -12,9 +12,12 @@ export default clerkMiddleware((auth, req) => {
 
   const { sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
+  console.log("Session Claims:", sessionClaims);
+  console.log("Role:", role);
   for (const { matcher, allowedRoles } of matchers) {
     if (matcher(req) && !allowedRoles.includes(role!)) {
-      return NextResponse.redirect(new URL(`/${role}`, req.url));
+      const redirectPath = role ? `/${role}` : "/";
+      return NextResponse.redirect(new URL(redirectPath, req.url));
     }
   }
 });
