@@ -12,8 +12,8 @@ export default clerkMiddleware((auth, req) => {
 
   const { sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
-  console.log("Session Claims:", sessionClaims);
-  console.log("Role:", role);
+  // console.log("Session Claims:", sessionClaims);
+  // console.log("Role:", role);
   for (const { matcher, allowedRoles } of matchers) {
     if (matcher(req) && !allowedRoles.includes(role!)) {
       const redirectPath = role ? `/${role}` : "/";
