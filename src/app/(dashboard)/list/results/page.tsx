@@ -76,7 +76,7 @@ const renderRow = (item: ResultList) => (
       {new Intl.DateTimeFormat("en-In").format(item.startTime)}
     </td>
     <td>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2" key={item.id}>
         {(role === "admin" || role === "teacher") && (
           <>
             <FormModal table="result" type="update" data={item} />

@@ -57,7 +57,7 @@ const renderRow = (item: ParentList) => (
     <td className="hidden md:table-cell">{item.phone}</td>
     <td className="hidden md:table-cell">{item.address}</td>
     <td>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2" key={item.id}>
         {role === "admin" && (
           <>
             <FormModal table="parent" type="update" data={item} />

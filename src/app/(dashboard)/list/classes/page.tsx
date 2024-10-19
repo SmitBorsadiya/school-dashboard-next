@@ -52,7 +52,7 @@ const renderRow = (item: ClassList) => (
       {item.supervisor.name + " " + item.supervisor.surname}
     </td>
     <td>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2" key={item.id}>
         {role === "admin" && (
           <>
             <FormModal table="class" type="update" data={item} />
