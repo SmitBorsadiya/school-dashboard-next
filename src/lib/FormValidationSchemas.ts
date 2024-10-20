@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// TEACHER
 export const teacherSchema = z.object({
   username: z
     .string()
@@ -20,6 +21,7 @@ export const teacherSchema = z.object({
 });
 export type TeacherInputs = z.infer<typeof teacherSchema>;
 
+// STUDENT
 export const studentSchema = z.object({
   username: z
     .string()
@@ -40,9 +42,21 @@ export const studentSchema = z.object({
 });
 export type StudentInputs = z.infer<typeof studentSchema>;
 
+// SUBJECT
 export const subjectSchema = z.object({
   id: z.coerce.number().optional(),
   name: z.string().min(1, { message: "Subject name is required!" }),
   teachers: z.array(z.string()),
 });
 export type SubjectInputs = z.infer<typeof subjectSchema>;
+
+// CLASS
+export const classSchema = z.object({
+  id: z.coerce.number().optional(),
+  name: z.string().min(1, { message: "Class name is required!" }),
+  capacity: z.coerce.number().min(1, { message: "Capacity is required!" }),
+  gradeId: z.coerce.number().min(1, { message: "Grade is required!" }),
+  supervisorId: z.coerce.string().optional(),
+  // teachers: z.array(z.string()),
+});
+export type ClassInputs = z.infer<typeof classSchema>;
